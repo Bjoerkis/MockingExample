@@ -26,4 +26,19 @@ public class EmployeeManager {
 		}
 		return payments;
 	}
+
+	public static int add(String num1, String num2){
+
+		if(num1.isEmpty() && num2.isEmpty()){
+			return 0;
+		}
+		else if(num1.isEmpty()) {
+			return Integer.parseInt(num2);
+		}
+		else if (num2.isEmpty()){
+			return Integer.parseInt(num1);
+		}
+		return Integer.parseInt(num1) + Integer.parseInt(num2);
+
+	}
 }
