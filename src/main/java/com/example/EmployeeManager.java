@@ -1,6 +1,10 @@
 package com.example;
 
+import com.sun.jdi.LongValue;
+
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class EmployeeManager {
 
@@ -27,8 +31,16 @@ public class EmployeeManager {
 		return payments;
 	}
 
-	public static int add(String num1, String num2){
+	public static int add(String... num1){
 
+		// < Lamba to enable the addition of an unlimited amount of numbers >
+		long longValue = Arrays.stream(num1)
+				.filter(n -> !n.isEmpty())
+				.map(n -> Integer.parseInt(n))
+				.collect(Collectors.summarizingInt(Integer::intValue)).getSum();
+
+
+		/* < If two numbers or less >
 		if(num1.isEmpty() && num2.isEmpty()){
 			return 0;
 		}
@@ -39,6 +51,11 @@ public class EmployeeManager {
 			return Integer.parseInt(num1);
 		}
 		return Integer.parseInt(num1) + Integer.parseInt(num2);
+		*/
+
+		return (int) longValue;
+
+
 
 	}
 }

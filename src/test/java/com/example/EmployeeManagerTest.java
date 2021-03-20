@@ -33,4 +33,9 @@ class EmployeeManagerTest {
         assertEquals(1,actual);
 
     }
+    @Test
+    void manyNumbersTest() {
+        int actual = EmployeeManager.add("1","2","3","4");
+        assertEquals(10,actual);
+    }
 }
