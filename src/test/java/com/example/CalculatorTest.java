@@ -35,5 +35,18 @@ class CalculatorTest {
         assertEquals(0 ,calcTest.add(""));
 
     }
+    @Test
+    void addDifferentDelimitersTest() {
+
+        assertEquals(3,calcTest.add("//;\n1;1;1"));
+
+    }
+    @Test
+    void negativesTest() {
+
+        assertThrows(RuntimeException.class, () -> calcTest.add("-1, -1"));
+        //calcTest.add("-1,-1");
+
+    }
 
 }
