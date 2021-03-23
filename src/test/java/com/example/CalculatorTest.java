@@ -20,8 +20,6 @@ class CalculatorTest {
         assertEquals(2, calcTest.add("1\n1"));
 
     }
-
-
     @Test
     void addTest() {
 
@@ -45,7 +43,13 @@ class CalculatorTest {
     void negativesTest() {
 
         assertThrows(RuntimeException.class, () -> calcTest.add("-1, -1"));
-        //calcTest.add("-1,-1");
+
+
+    }
+    @Test
+    void over1000Test() {
+
+       assertEquals(1,calcTest.add("1001,1"));
 
     }
 
