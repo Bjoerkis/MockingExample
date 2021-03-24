@@ -3,6 +3,7 @@ package com.example;
 import java.util.Arrays;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
+import java.util.regex.Pattern;
 
 
 public class Calculator {
@@ -19,17 +20,10 @@ public class Calculator {
 
             if (text.startsWith("//")) {
 
-                String[] newText;
-
-                var textSubstring = text.substring(2, 3);
-                var textWithoutDelimiter = text.substring(4);
-
-                newText = textWithoutDelimiter.split(textSubstring);
-
-
-                sum = Arrays.stream(newText)
-                        .map(Integer::parseInt)
-                        .mapToInt(each -> each).sum();
+                sum = Pattern.compile("[^-?0-9]+")
+                        .splitAsStream(text).filter(s -> !s.isEmpty())
+                        .mapToInt(Integer::parseInt)
+                        .sum();
 
             } else {
 
@@ -45,10 +39,12 @@ public class Calculator {
         }
         return sum;
     }
-    Consumer<Integer> exceptionThrowing = x ->{
-        if(x<0) {
+
+    Consumer<Integer> exceptionThrowing = x -> {
+        if (x < 0) {
             throw new RuntimeException();
         }
     };
     Predicate<Integer> overOneThousand = x -> x < 1001;
+
 }
