@@ -10,8 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class EmployeeManagerTest {
 
-    BankService bs = new BankServiceTest();
     EmployeeRepository er = new EmployeeRepositoryTest();
+    BankService bs = new BankServiceTest();
     EmployeeManager employeemanager = new EmployeeManager(er, bs);
 
 

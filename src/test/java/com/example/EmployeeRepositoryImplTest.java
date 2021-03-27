@@ -1,9 +1,11 @@
 package com.example;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
-class EmployeeRepositoryIT {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+class EmployeeRepositoryImplTest {
 
     EmployeeRepository employeeRepository = new EmployeeRepositoryImpl();
     Employee steve = new Employee("1", 500);
@@ -25,6 +27,7 @@ class EmployeeRepositoryIT {
         assertTrue(employeeRepository.findAll().contains(steve));
 
     }
+
     @Test
     void saveDuplicatesIsRemovedTest() {
 
@@ -32,8 +35,9 @@ class EmployeeRepositoryIT {
         employeeRepository.save(steve);
 
 
-        assertEquals( 1,employeeRepository.findAll().size());
+        assertEquals(1, employeeRepository.findAll().size());
 
     }
+
 
 }
